@@ -1,0 +1,4 @@
+vendor/*
+Main.php
+.idea/
+composer.phar
