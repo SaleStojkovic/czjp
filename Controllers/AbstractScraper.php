@@ -7,7 +7,6 @@ use CZJPScraping\Models\GenderHelper;
 use CZJPScraping\Models\NameHelper;
 use CZJPScraping\Models\SkillHelper;
 
-include_once __DIR__ . '/ScrapeInterface.php';
 include_once __DIR__ . '/AbstractScraper.php';
 include_once __DIR__ . '/../Models/AbstractModel.php';
 

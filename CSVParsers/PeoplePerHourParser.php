@@ -23,7 +23,6 @@ class PeoplePerHourParser extends AbstractParser
         $usersIds = '';
         $userEarningsArray = [];
         $userCommentsArray = [];
-        //TODO ovo treba da se cuva
         $moneyUserEarned = [];
 
         /** @var User $user */
@@ -69,7 +68,6 @@ class PeoplePerHourParser extends AbstractParser
 
     public function loadMoneyEarned()
     {
-        
     }
 }
 $parser = new PeoplePerHourParser('5', 'peoplePerHour');

@@ -24,7 +24,7 @@ class Mapper
 
     const GENDER = 'genders';
     const NAME = 'names';
-    const SKILL = 'skills';
+    const SKILL = 'skillArray';
     const USER = 'users';
 
     public function __construct(string $tableName)

@@ -17,6 +17,8 @@ include_once __DIR__ . '/User_Earning_Comment.php';
 include_once __DIR__ . '/Mapper.php';
 include_once __DIR__ . '/Guru_Anual_Earning.php';
 include_once __DIR__ . '/Skill_Url_Scrape_Log.php';
+include_once __DIR__ . '/Skill_Avg.php';
+include_once __DIR__ . '/Currency_Value.php';
 
 /**
  * Class AbstractModel

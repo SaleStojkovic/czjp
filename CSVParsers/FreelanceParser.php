@@ -79,7 +79,7 @@ class FreelanceParser extends AbstractParser
         foreach ($userJobs as $userJob) {
             $moneyEarned = (int) $userJob->getEarned();
 
-            $jobsPerUser[$userJob->getUserId()] += $moneyEarned;
+            $jobsPerUser[$userJob->getUserId()] += $moneyEarned * $this->currencyValues[$userJob->getCurrencyId()];
         }
 
         foreach ($this->users as $user) {

@@ -470,7 +470,7 @@ class FreelanceScrape extends AbstractScraper implements ScrapeInterface
 //todo mozda bi bilo najbolje da se napravi jedna skripta gde bi se odabralo sta da se pokrene koji scraper
 $quickScript = new FreelanceScrape('4', '1');
 
-//echo 'First jobs and skills' . "\r\n";
+//echo 'First jobs and skillArray' . "\r\n";
 //
 //$quickScript->saveUsersJobsAndSkills('2', '4');
 //

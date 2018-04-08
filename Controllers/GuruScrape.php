@@ -5,14 +5,11 @@ use CZJPScraping\Models\GenderHelper;
 use CZJPScraping\Models\Guru_Anual_Earning;
 use CZJPScraping\Models\Mapper;
 use CZJPScraping\Models\Nationalities;
-use CZJPScraping\Models\Scrape_Log;
 use CZJPScraping\Models\Skill;
 use CZJPScraping\Models\Skill_Url_Scrape_Log;
 use CZJPScraping\Models\User;
 use CZJPScraping\Models\User_Rating;
 use CZJPScraping\Models\User_Skill;
-use function simplehtmldom_1_5\file_get_html;
-use simplehtmldom_1_5\simple_html_dom;
 
 include_once __DIR__ . '/../vendor/sunra/php-simple-html-dom-parser/Src/Sunra/PhpSimple/simplehtmldom_1_5/simple_html_dom.php';
 
@@ -22,11 +19,10 @@ include_once __DIR__ . '/AbstractScraper.php';
  * Class GuruScraper
  * @package CZJPScraping\Controllers
  */
-class GuruScraper extends AbstractScraper implements ScrapeInterface
+class GuruScrape extends AbstractScraper implements ScrapeInterface
 {
     public $cookie;
 
-    //todo ovo izbrisi
     public $allUserNames;
 
     /**
@@ -82,7 +78,7 @@ class GuruScraper extends AbstractScraper implements ScrapeInterface
 
     public function getAllSkills()
     {
-        $url = 'https://www.guru.com/m/hire/freelancers/all-skills/';
+        $url = 'https://www.guru.com/m/hire/freelancers/all-skillArray/';
 
         $page = $this->getHttpPage($url);
 
@@ -298,7 +294,7 @@ class GuruScraper extends AbstractScraper implements ScrapeInterface
 }
 
 $cookie = 'visid_incap_1227176=lSM67Z2mQBiTWfTdTkqQ5EeAs1oAAAAAQUIPAAAAAACJyh+PM1qzErSqVC4B4p3O; _ga=GA1.2.101285913.1521713227; ASP.NET_SessionId=ziw45ub4aqquajn4qnu04cks; nlbi_1227176=31xbTM9PjnhYmDHVNw2eVgAAAABJcpBT//gL44e/M9OPUroX; incap_ses_534_1227176=imbXIu5ei1Rv6Wl2oiZpB9OwyFoAAAAAdGhbkVTHx20kpoJ95xOiMQ==; ___utmvc=qPq5ybzGAl8m+fmr1cH0OoZFOd3KrBUVMO7jKynojrHTs9+9oP2AHx+X+CK1m+t5ElaxpWJxisRBXDCkKqQenbJXUF7rR6Ub1FBwjoOlh/6oWj0HaNLBES44L9u+Gta3p+0Vdeqoc5JzdrGwxvpXAh7FtxQfnrHc3YKbrZknPr+GWtZ7NhKEhr5XQxxqtZD8zwGLu2TYiztDdOc0oLUCfJ76BdM0yRNrgUfQWWdqtNtveY/tKcPLCHYmnFRAwFevdrQZypLqSb1lkQ7Yj5+bPpp8gjz8Wf1vVF3Qlbwfry2TWXNCvRIZK1mMOfHCXWdC2kEHFeOCxxrk26sB4fl8axKM6JHpUq9hxCPligulj0/8bE3TBpPfhoza2PU7XRINeu3CreRfwK1GtIH2B36jaMhYK+Q7d9GsaiOz2msp5uO06aCq1Cc2U5NRkj3wnswcLu274hIUfx2L73TE85+yuw9YZIc6B0Iau7g4Rpf9rkYL+8I9xQdpwdw7KSOlQg36M5AXYvilcd1fgI33Df5K/KNacBor+PR0Rjpts0w6JV5bg8Xii6ncjvLZFZUoXyofX/QfsWSrTjr+hKFI+Sr2n0CSlFfEehzNEwYS2EXe7Ppsp97xgKaFUd56d3HpJvwyl10dHXqpx/Mv8d1TG9snTecqN0QTezkffihXkUvjzpYk6CNv0HZY+QKOGcOjoO6wXv9Mx/a4pDujFf3q7URSjzLVbxMKSWXv7/GBsME/LLKZU3VpeS2MDVmwEcf+UB3wgrLY6LhfeZPcMjEB1vFf8hAtoDr9DgmXuIosw3ckHEnoN53yl21siif33x8WAranvPCzz0iGYfa7zIjQyCCc/lgNMD6HKcd6Y6k8yOFbmRQrhVhrBXE2Uce9gAPg9cBHKQ5WvXQ+hR4RA7+VOQrWc4p7ZvK5mn/SNkhmtSMu60VsiGsP2LmIQkv0HiphQu4a5rH9ZVAxcj00W80p2vF+1Po3eqKDx364ECC8jZKcm5nRC712HMFulwJoiW2I95n+qZO/q4Gf1OPyUy3v6Wk+wQVqeHTgH2GHCJVXmsU00opDgg9QXEQapqbwyhxBWwj2hSOUyfMsZGlnZXN0PTgxMTE1LHM9Njg3YThiNjI3YjljODU5ZTdkODc2MzYyNzQ5ZjdiOGI3ZDkzNWNhZTY5ODhhNzllOWM3Y2FhNzc3NGFiODNhNGFiODA4Y2FhN2M4MjZlNzI=';
-$scraper = new GuruScraper('7', '3', $cookie);
+$scraper = new GuruScrape('7', '3', $cookie);
 $scraper->saveUserReviewsAndQualifications(Nationalities::SERBIAN);
 
 echo 'Done!';

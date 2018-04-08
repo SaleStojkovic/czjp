@@ -4,6 +4,7 @@ namespace CZJPScraping\CSVParsers;
 include_once __DIR__ . '/../Controllers/AbstractScraper.php';
 include_once __DIR__ . '/../Models/AbstractModel.php';
 
+use CZJPScraping\Models\Currency_Value;
 use CZJPScraping\Models\Mapper;
 use CZJPScraping\Models\Scrape_Log;
 use CZJPScraping\Models\SkillHelper;
@@ -30,6 +31,9 @@ abstract class AbstractParser
     /** @var SkillHelper */
     public $skillHelper;
 
+    /** @var array */
+    public $currencyValues;
+
     /**
      * AbstractParser constructor.
      * @param int $scrapeLogId
@@ -50,6 +54,7 @@ abstract class AbstractParser
             $this->loadAllSkills();
             $this->loadAllReviews();
             $this->loadMoneyEarned();
+            $this->loadCurrencyValues();
 
         } catch (\ReflectionException $exception) {
             throw new \ReflectionException($exception);
@@ -84,7 +89,7 @@ abstract class AbstractParser
     /**
      * @return string
      */
-    public function getDesktopPath()
+    private function getDesktopPath()
     {
         return '/Users/Arbor/Desktop/CZJPcsv/';
     }
@@ -94,7 +99,7 @@ abstract class AbstractParser
      * @throws \Exception
      * @throws \ReflectionException
      */
-    public function getUsers()
+    private function getUsers()
     {
         $mapper = new Mapper('users');
         $whereCause = 'WHERE scrape_log_id = ' . $this->scrapeLog->getScrapeLogId();
@@ -149,7 +154,25 @@ abstract class AbstractParser
             $user->setSkills($skillsByUser[$user->getUserId()]);
         }
 
-        echo 'Loaded all skills' . "\r\n";
+        echo 'Loaded all skillArray' . "\r\n";
+    }
+
+    /**
+     * @throws \Exception
+     * @throws \ReflectionException
+     */
+    private function loadCurrencyValues()
+    {
+        $mapper = new Mapper('currency_values');
+        $currencyValues = $mapper->getCollection('WHERE scrape_log_id = ' . $this->scrapeLog->getScrapeLogId());
+        $currencyArray = [];
+
+        /** @var Currency_Value $currencyValue */
+        foreach ($currencyValues as $currencyValue) {
+            $currencyArray[$currencyValue->getCurrencyId()] = $currencyValue->getValueToDollar();
+        }
+
+        $this->currencyValues = $currencyArray;
     }
 
     public abstract function loadAllReviews();

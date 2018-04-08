@@ -13,12 +13,12 @@ class GenderHelper
 {
     const US = '1';
     const EURO = '2';
-    const POUNDS = '3';
+    const POUND = '3';
 
     public static $displayNames = [
         self::US => 'Dolar',
         self::EURO => 'Euro',
-        self::POUNDS => 'Funta'
+        self::POUND => 'Funta'
     ];
 
     /** @var  array  */

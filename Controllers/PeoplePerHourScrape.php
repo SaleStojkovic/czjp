@@ -11,9 +11,8 @@ use CZJPScraping\Models\User_Skill;
 use GuzzleHttp\Client;
 
 include_once __DIR__ . '/AbstractScraper.php';
-include_once __DIR__ . '/ScrapeInterface.php';
 
-class PeoplePerHourScrape extends AbstractScraper implements ScrapeInterface
+class PeoplePerHourScrape extends AbstractScraper
 {
     //todo ovo najverovatnije sve moze da se obrise
     public  function run() : bool
@@ -70,7 +69,7 @@ class PeoplePerHourScrape extends AbstractScraper implements ScrapeInterface
 //            $skillsRaw = $this->matchTagContent('a', 'class="tag-item small"', $contents)[1];
 //
 //            foreach ($skillsRaw as $skill) {
-//                $skillId = $this->skillHelper->getSkillId($skill);
+//                $skillId = $this->skillHelper->getSkillName($skill);
 //
 //                $newUserSkill = new User_Skill(
 //                    $newUser->getUserId(),

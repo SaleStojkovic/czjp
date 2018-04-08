@@ -26,4 +26,12 @@ class Platform
     {
         return $this->platform_id;
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }
