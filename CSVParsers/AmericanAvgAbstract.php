@@ -60,7 +60,7 @@ abstract class AmericanAvgAbstract
         foreach ($skillAvgs as $skillAvg) {
             $row = [
                 'Skill name' => $skillAvg->getSkillName(),
-                'Average Sum' => $skillAvg->getAverage(),
+                'Average Sum' => "'" . $skillAvg->getAverage(),
             ];
 
             $rows[] = $row;
@@ -131,17 +131,17 @@ abstract class AmericanAvgAbstract
         foreach ($userCountBySkill as $skillName => $count) {
             $average = 0;
             if ($count) {
-                $average = $usersEarningsBySkill[$skillName] / $count;
+                $average = round($usersEarningsBySkill[$skillName] / $count, 2);
             }
 
             $skillAvg = new Skill_Avg(
                 $average . '',
                 $skillName,
                 $this->scrapeLog->getScrapeLogId(),
-                date('Y-m-d H:i:s')
+                date('Y-m-d')
             );
 
-            $skillAvg->save();
+//            $skillAvg->save();
 
             $skillsAvg[] = $skillAvg;
         }

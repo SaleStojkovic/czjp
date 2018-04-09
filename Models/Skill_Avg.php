@@ -9,7 +9,7 @@ class Skill_Avg extends AbstractModel
     /** @var string */
     public $skill_avg_id;
 
-    /** @var int */
+    /** @var string */
     public $average;
 
     /** @var string */
@@ -45,9 +45,9 @@ class Skill_Avg extends AbstractModel
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getAverage(): int
+    public function getAverage() : string
     {
         return $this->average;
     }
